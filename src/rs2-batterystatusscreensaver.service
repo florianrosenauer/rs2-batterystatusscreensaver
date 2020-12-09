@@ -1,0 +1,9 @@
+[Unit]
+Description=batterystatusscreensaver
+
+[Service]
+ExecStart=/usr/bin/rs2-batterystatusscreensaver.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
