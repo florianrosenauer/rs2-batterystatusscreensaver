@@ -25,6 +25,16 @@ while true; do
 	POSY=$((72 + $RANDOM % 400))
 	convert -size 640x480 canvas:none -fill "rgb($BACKR,$BACKG,$BACKB)" -stroke black -strokewidth 1 -pointsize 72 -font FreeSans -draw "rectangle 0,0 640,480 fill white text $POSX,$POSY 'Battery: $BATTERY_LEVEL%'" /home/pi/.emulationstation/slideshow/image/batterystatus.png
 
+	#set battery low LED
+	if [ $BATTERY_LEVEL -gt 10 ]
+	     then
+	     echo "battery level $BATTERY_LEVEL - over 10 percent - LED off" >> /var/log/rs2-batterystatusscreensaver.log
+	     python /opt/rs2-batterystatusscreensaver/battery_led_off.py
+	     else
+	     echo "battery level $BATTERY_LEVEL -  less or equal 10 percent - LED on" >> /var/log/rs2-batterystatusscreensaver.log
+	     python /opt/rs2-batterystatusscreensaver/battery_led_on.py
+	fi
+
     #wait one minute
     sleep 60
 done

@@ -2,7 +2,7 @@
 Description=batterystatusscreensaver
 
 [Service]
-ExecStart=/usr/bin/rs2-batterystatusscreensaver.sh
+ExecStart=/opt/rs2-batterystatusscreensaver/rs2-batterystatusscreensaver.sh
 Restart=on-failure
 
 [Install]
